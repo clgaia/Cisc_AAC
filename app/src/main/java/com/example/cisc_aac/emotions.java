@@ -2,14 +2,22 @@ package com.example.cisc_aac;
 
 import android.annotation.SuppressLint;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.Locale;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -27,6 +35,8 @@ public class emotions extends AppCompatActivity {
      * user interaction before hiding the system UI.
      */
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
+    private MyList myList;
+    TextToSpeech tts;
 
     /**
      * Some older devices needs a small delay between UI widget updates
@@ -54,6 +64,7 @@ public class emotions extends AppCompatActivity {
     };
     private View mControlsView;
     private final Runnable mShowPart2Runnable = new Runnable() {
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void run() {
             // Delayed display of UI elements
@@ -62,55 +73,27 @@ public class emotions extends AppCompatActivity {
                 actionBar.show();
             }
             mControlsView.setVisibility(View.VISIBLE);
-        }
-    };
-    private boolean mVisible;
-    private final Runnable mHideRunnable = new Runnable() {
-        @Override
-        public void run() {
-            hide();
-        }
-    };
-    /**
-     * Touch listener to use for in-layout UI controls to delay hiding the
-     * system UI. This is to prevent the jarring behavior of controls going away
-     * while interacting with activity UI.
-     */
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            switch (motionEvent.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    if (AUTO_HIDE) {
-                        delayedHide(AUTO_HIDE_DELAY_MILLIS);
-                    }
-                    break;
-                case MotionEvent.ACTION_UP:
-                    view.performClick();
-                    break;
-                default:
-                    break;
-            }
-            return false;
+            TextInputEditText textView = findViewById(R.id.text_input_edit_text);
+            textView.setText(myList.getString());
         }
     };
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_emotions);
 
-        mVisible = true;
 
 
-        // Set up the user interaction to manually show or hide the system UI.
-        mContentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggle();
-            }
-        });
+        //get current myList status - words in top
+        myList = MyList.getInstance();
+        TextInputEditText textView = findViewById(R.id.text_input_edit_text);
+        String allValues = String.join(" ", myList.getItems());
+        textView.setText(allValues);
+
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
@@ -155,6 +138,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                TODO: delete most recent word added to list
+                  myList.removeItem();
+                textView.setText(myList.getString());
             }
         });
 
@@ -162,6 +147,24 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: read list in order using text-to-speech and clear list
+                String words = myList.getString();
+                tts = new TextToSpeech(getApplicationContext(), status -> {
+                    if (status == TextToSpeech.SUCCESS) {
+                        // Set language for text-to-speech
+                        int result = tts.setLanguage(Locale.US);
+                        if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                            Log.e("TTS", "Language not supported");
+                        } else {
+                            // Speak the string
+                            tts.speak(words, TextToSpeech.QUEUE_FLUSH, null,null);
+                        }
+                    } else {
+                        Log.e("TTS", "Initialization failed");
+                    }
+
+                });
+                myList.clear();
+                textView.setText(myList.getString());
             }
         });
 
@@ -169,6 +172,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "Home"
+                myList.addItem(word1.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -176,6 +181,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "school"
+                myList.addItem(word2.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -183,6 +190,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "grocery store"
+                myList.addItem(word3.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -190,6 +199,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "movies"
+                myList.addItem(word4.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -197,6 +208,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "park"
+                myList.addItem(word5.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -204,6 +217,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: Add popup with tone selection options and append to end of list
+
+                textView.setText(myList.getString());
             }
         });
 
@@ -211,6 +226,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "work"
+                myList.addItem(word7.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -218,6 +235,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "bar"
+                myList.addItem(word8.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -225,6 +244,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "mall"
+                myList.addItem(word9.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -232,6 +253,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "gym"
+                myList.addItem(word10.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -239,6 +262,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "doctor"
+                myList.addItem(word11.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -246,6 +271,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add "restaurant"
+                myList.addItem(word12.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -253,6 +280,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add text box popup
+                myList.addItem(word13.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -260,6 +289,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add text box popup
+                myList.addItem(word14.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -267,6 +298,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add text box popup
+                myList.addItem(word15.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -274,6 +307,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add text box popup
+                myList.addItem(word16.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -281,6 +316,8 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add text box popup
+                myList.addItem(word17.getText().toString());
+                textView.setText(myList.getString());
             }
         });
 
@@ -288,59 +325,29 @@ public class emotions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: add text box popup
+                myList.addItem(word18.getText().toString());
+                textView.setText(myList.getString());
             }
         });
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
-        // Trigger the initial hide() shortly after the activity has been
-        // created, to briefly hint to the user that UI controls
-        // are available.
-        delayedHide(100);
-    }
-
-    private void toggle() {
-        if (mVisible) {
-            hide();
-        } else {
-            show();
+    public void onDestroy() {
+        // Don't forget to shutdown tts!
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
         }
+        super.onDestroy();
     }
 
-    private void hide() {
-        // Hide UI first
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
+    @Override
+    public void onPause(){
+        if(tts !=null){
+            tts.stop();
+            tts.shutdown();
         }
-        mControlsView.setVisibility(View.GONE);
-        mVisible = false;
-
-        // Schedule a runnable to remove the status and navigation bar after a delay
-        mHideHandler.removeCallbacks(mShowPart2Runnable);
-        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
+        super.onPause();
     }
 
-    private void show() {
-        // Show the system bar
-        mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
-        mVisible = true;
-
-        // Schedule a runnable to display UI elements after a delay
-        mHideHandler.removeCallbacks(mHidePart2Runnable);
-        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
-    }
-
-    /**
-     * Schedules a call to hide() in delay milliseconds, canceling any
-     * previously scheduled calls.
-     */
-    private void delayedHide(int delayMillis) {
-        mHideHandler.removeCallbacks(mHideRunnable);
-        mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
 }

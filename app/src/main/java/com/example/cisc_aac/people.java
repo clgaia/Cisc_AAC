@@ -27,6 +27,7 @@ public class people extends AppCompatActivity {
      * user interaction before hiding the system UI.
      */
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
+    private MyList myList;
 
     /**
      * Some older devices needs a small delay between UI widget updates
@@ -103,13 +104,7 @@ public class people extends AppCompatActivity {
 
         mVisible = true;
 
-        // Set up the user interaction to manually show or hide the system UI.
-        mContentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggle();
-            }
-        });
+
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away

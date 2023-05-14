@@ -2,14 +2,25 @@ package com.example.cisc_aac;
 
 import android.annotation.SuppressLint;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -27,6 +38,8 @@ public class FullscreenActivity extends AppCompatActivity {
      * user interaction before hiding the system UI.
      */
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
+    private MyList myList;
+    TextToSpeech tts;
 
     /**
      * Some older devices needs a small delay between UI widget updates
@@ -54,6 +67,7 @@ public class FullscreenActivity extends AppCompatActivity {
     };
     private View mControlsView;
     private final Runnable mShowPart2Runnable = new Runnable() {
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void run() {
             // Delayed display of UI elements
@@ -62,46 +76,48 @@ public class FullscreenActivity extends AppCompatActivity {
                 actionBar.show();
             }
             mControlsView.setVisibility(View.VISIBLE);
+            TextInputEditText textView = findViewById(R.id.text_input_edit_text);
+            textView.setText(myList.getString());
         }
     };
-    private boolean mVisible;
-    private final Runnable mHideRunnable = new Runnable() {
-        @Override
-        public void run() {
-            hide();
-        }
-    };
+
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            switch (motionEvent.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    if (AUTO_HIDE) {
-                        delayedHide(AUTO_HIDE_DELAY_MILLIS);
-                    }
-                    break;
-                case MotionEvent.ACTION_UP:
-                    view.performClick();
-                    break;
-                default:
-                    break;
-            }
-            return false;
+    @Override
+    public void onDestroy() {
+        // Don't forget to shutdown tts!
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
         }
-    };
+        super.onDestroy();
+    }
 
+    @Override
+    public void onPause(){
+        if(tts !=null){
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onPause();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_fullscreen);
 
-        mVisible = true;
+        //get current myList status - words in top
+        myList = MyList.getInstance();
+        TextInputEditText textView = findViewById(R.id.text_input_edit_text);
+        String allValues = String.join(" ", myList.getItems());
+        textView.setText(allValues);
+
 //        mControlsView = findViewById(R.id.fullscreen_content_controls);
 //        mContentView = findViewById(R.id.fullscreen_content);
 
@@ -137,7 +153,7 @@ public class FullscreenActivity extends AppCompatActivity {
         home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_fullscreen);
+                textView.setText(myList.getString());
             }
         });
 
@@ -145,6 +161,8 @@ public class FullscreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                TODO: delete most recent word added to list
+                  myList.removeItem();
+                  textView.setText(myList.getString());
             }
         });
 
@@ -152,6 +170,24 @@ public class FullscreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: read list in order using text-to-speech and clear list
+                String words = myList.getString();
+                tts = new TextToSpeech(getApplicationContext(), status -> {
+                    if (status == TextToSpeech.SUCCESS) {
+                        // Set language for text-to-speech
+                        int result = tts.setLanguage(Locale.US);
+                        if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                            Log.e("TTS", "Language not supported");
+                        } else {
+                            // Speak the string
+                            tts.speak(words, TextToSpeech.QUEUE_FLUSH, null,null);
+                        }
+                    } else {
+                        Log.e("TTS", "Initialization failed");
+                    }
+
+                });
+                myList.clear();
+                textView.setText(myList.getString());
             }
         });
 
@@ -159,6 +195,9 @@ public class FullscreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              TODO: Label button first word on stack
+                //myList.addItem("good?");
+                textView.setText(myList.getString());
+
             }
         });
 
@@ -200,77 +239,109 @@ public class FullscreenActivity extends AppCompatActivity {
         emotions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_emotions);
+                Intent intent = new Intent(FullscreenActivity.this, emotions.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         people.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_people);
+
+                Intent intent = new Intent(FullscreenActivity.this, people.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         places.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_places_fullscreen);
+
+                Intent intent = new Intent(FullscreenActivity.this, places_fullscreen.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_food);
+
+                Intent intent = new Intent(FullscreenActivity.this, food.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_time);
+
+                Intent intent = new Intent(FullscreenActivity.this, time.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         myself.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_myself);
+
+                Intent intent = new Intent(FullscreenActivity.this, myself.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         greetings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_greetings);
+
+                Intent intent = new Intent(FullscreenActivity.this, greetings.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         personal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_personal);
+
+                Intent intent = new Intent(FullscreenActivity.this, personal.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         things.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_things);
+
+                Intent intent = new Intent(FullscreenActivity.this, things.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         leisure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_leisure);
+
+                Intent intent = new Intent(FullscreenActivity.this, leisure.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         little_words.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_little);
+
+                Intent intent = new Intent(FullscreenActivity.this, little.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
@@ -287,13 +358,7 @@ public class FullscreenActivity extends AppCompatActivity {
 
 
 
-        // Set up the user interaction to manually show or hide the system UI.
-        mContentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggle();
-            }
-        });
+
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
@@ -301,55 +366,7 @@ public class FullscreenActivity extends AppCompatActivity {
 //        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
 
-        // Trigger the initial hide() shortly after the activity has been
-        // created, to briefly hint to the user that UI controls
-        // are available.
-        delayedHide(100);
-    }
 
-    private void toggle() {
-        if (mVisible) {
-            hide();
-        } else {
-            show();
-        }
-    }
 
-    private void hide() {
-        // Hide UI first
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
-        mControlsView.setVisibility(View.GONE);
-        mVisible = false;
-
-        // Schedule a runnable to remove the status and navigation bar after a delay
-        mHideHandler.removeCallbacks(mShowPart2Runnable);
-        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
-    }
-
-    private void show() {
-        // Show the system bar
-        mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
-        mVisible = true;
-
-        // Schedule a runnable to display UI elements after a delay
-        mHideHandler.removeCallbacks(mHidePart2Runnable);
-        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
-    }
-
-    /**
-     * Schedules a call to hide() in delay milliseconds, canceling any
-     * previously scheduled calls.
-     */
-    private void delayedHide(int delayMillis) {
-        mHideHandler.removeCallbacks(mHideRunnable);
-        mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
 }
