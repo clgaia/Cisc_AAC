@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -101,8 +102,6 @@ public class leisure extends AppCompatActivity {
         setContentView(R.layout.activity_leisure);
 
         mVisible = true;
-        mControlsView = findViewById(R.id.fullscreen_content_controls);
-        mContentView = findViewById(R.id.fullscreen_content);
 
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +114,181 @@ public class leisure extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        /*
+        defines each button on the home page
+         */
+        Button home_button = findViewById(R.id.home_button);
+        Button backspace = findViewById(R.id.backspace);
+        Button speak_button = findViewById(R.id.speak_button);
+        Button word1 = findViewById(R.id.leisure_1);
+        Button word2 = findViewById(R.id.leisure_2);
+        Button word3 = findViewById(R.id.leisure_3);
+        Button word4 = findViewById(R.id.leisure_4);
+        Button word5 = findViewById(R.id.leisure_5);
+        Button tone = findViewById(R.id.leisure_6);
+        Button word7 = findViewById(R.id.leisure_7);
+        Button word8 = findViewById(R.id.leisure_8);
+        Button word9 = findViewById(R.id.leisure_9);
+        Button word10 = findViewById(R.id.leisure_10);
+        Button word11 = findViewById(R.id.leisure_11);
+        Button word12 = findViewById(R.id.leisure_12);
+        Button word13 = findViewById(R.id.leisure_13);
+        Button word14 = findViewById(R.id.leisure_14);
+        Button word15 = findViewById(R.id.leisure_15);
+        Button word16 = findViewById(R.id.leisure_16);
+        Button word17 = findViewById(R.id.leisure_17);
+        Button word18 = findViewById(R.id.leisure_18);
+
+        /*
+        defines each button listener on the home page
+         */
+        home_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.activity_fullscreen);
+            }
+        });
+
+        backspace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                TODO: delete most recent word added to list
+            }
+        });
+
+        speak_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: read list in order using text-to-speech and clear list
+            }
+        });
+
+        word1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "Home"
+            }
+        });
+
+        word2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "school"
+            }
+        });
+
+        word3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "grocery store"
+            }
+        });
+
+        word4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "movies"
+            }
+        });
+
+        word5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "park"
+            }
+        });
+
+        tone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: Add popup with tone selection options and append to end of list
+            }
+        });
+
+        word7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "work"
+            }
+        });
+
+        word8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "bar"
+            }
+        });
+
+        word9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "mall"
+            }
+        });
+
+        word10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "gym"
+            }
+        });
+
+        word11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "doctor"
+            }
+        });
+
+        word12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add "restaurant"
+            }
+        });
+
+        word13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add text box popup
+            }
+        });
+
+        word14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add text box popup
+            }
+        });
+
+        word15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add text box popup
+            }
+        });
+
+        word16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add text box popup
+            }
+        });
+
+        word17.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add text box popup
+            }
+        });
+
+        word18.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//              TODO: add text box popup
+            }
+        });
+
     }
 
     @Override

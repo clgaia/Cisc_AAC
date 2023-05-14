@@ -93,62 +93,67 @@
 
             <!-- Buttons in the grid -->
             <Button
-                android:id="@+id/button_1"
+                android:id="@+id/time_1"
                 style="@style/Widget.Material3.Button.Icon"
                 android:backgroundTint="@color/category_color"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Button 1"
+                android:textSize="15dp"
+                android:text="Leaving"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_2"
+                android:id="@+id/time_2"
                 android:backgroundTint="@color/category_color"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Button 2"
+                android:textSize="15dp"
+                android:text="When"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_3"
+                android:id="@+id/time_3"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Button 3"
+                android:textSize="15dp"
+                android:text="Time to Eat"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_4"
+                android:id="@+id/time_4"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Button 4"
+                android:textSize="15dp"
+                android:text="Time for __"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_5"
+                android:id="@+id/time_5"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Button 5"
+                android:textSize="15dp"
+                android:text="Time to Sleep"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_6"
+                android:id="@+id/time_6"
                 android:backgroundTint="@color/tone_color"
                 android:layout_margin="5dp"
                 android:background="@animator/btn_selector_shape"
@@ -161,144 +166,134 @@
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_7"
+                android:id="@+id/time_7"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Emotions"
+                android:text="Time to go"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_8"
+                android:id="@+id/time_8"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="People"
+                android:text="What time is it?"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_9"
+                android:id="@+id/time_9"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Places"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_10"
+                android:id="@+id/time_10"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Food"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_11"
+                android:id="@+id/time_11"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Time"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_12"
+                android:id="@+id/time_12"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Myself"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_13"
+                android:id="@+id/time_13"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Greetings"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_14"
+                android:id="@+id/time_14"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Personal"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_15"
+                android:id="@+id/time_15"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Things"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_16"
+                android:id="@+id/time_16"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Leisure"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
             <Button
-                android:id="@+id/button_17"
+                android:id="@+id/time_17"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Little Words"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
             <Button
-                android:id="@+id/button_18"
+                android:id="@+id/time_18"
                 android:backgroundTint="@color/category_color"
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="New Word"
                 android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>

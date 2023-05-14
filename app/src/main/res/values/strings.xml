@@ -4,4 +4,13 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_places_fullscreen">FullscreenActivity</string>
     <string name="title_activity_leisure">FullscreenActivity</string>
+    <string name="title_activity_emotions">FullscreenActivity</string>
+    <string name="title_activity_people">FullscreenActivity</string>
+    <string name="title_activity_food">FullscreenActivity</string>
+    <string name="title_activity_time">FullscreenActivity</string>
+    <string name="title_activity_myself">FullscreenActivity</string>
+    <string name="title_activity_greetings">FullscreenActivity</string>
+    <string name="title_activity_personal">FullscreenActivity</string>
+    <string name="title_activity_things">FullscreenActivity</string>
+    <string name="title_activity_little">FullscreenActivity</string>
 </resources>

@@ -10,12 +10,5 @@
 
     </item>
 
-    <item>
-        <shape android:shape="rectangle">
-            <gradient android:angle="225" android:endColor="@color/tone_color" android:startColor="@color/tone_color" />
-            <corners android:radius="@dimen/btn_corner_radius" />
-            <stroke android:width="4dp" android:color="@android:color/black" />
-        </shape>
 
-    </item>
 </selector>

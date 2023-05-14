@@ -10,10 +10,55 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cisc_AAC">
         <activity
+            android:name=".little"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_little"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen"></activity>
+        <activity
+            android:name=".things"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_things"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen" />
+        <activity
+            android:name=".personal"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_personal"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen" />
+        <activity
+            android:name=".greetings"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_greetings"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen" />
+        <activity
+            android:name=".myself"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_myself"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen" />
+        <activity
+            android:name=".time"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_time"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen" />
+        <activity
+            android:name=".food"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_food"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen" />
+        <activity
+            android:name=".people"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_people"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen" />
+        <activity
+            android:name=".emotions"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_emotions"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen" />
+        <activity
             android:name=".leisure"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_leisure"
-            android:theme="@style/Theme.Cisc_AAC.Fullscreen"></activity>
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen" />
         <activity
             android:name=".places_fullscreen"
             android:configChanges="orientation|keyboardHidden|screenSize"

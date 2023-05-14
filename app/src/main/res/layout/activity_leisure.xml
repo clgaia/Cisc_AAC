@@ -1,51 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/fullscreenBackgroundColor"
+    android:background="@color/green_background"
+
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:theme="@style/ThemeOverlay.Cisc_AAC.FullscreenContainer"
-    tools:context=".leisure">
+    tools:context=".FullscreenActivity"
+    tools:ignore="MissingDefaultResource">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="?attr/fullscreenTextColor"
-        android:textSize="50sp"
-        android:textStyle="bold" />
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="@style/Widget.Theme.Cisc_AAC.ButtonBar.Fullscreen"
-            android:layout_width="match_parent"
+        <!-- Home button in top left -->
+        <Button
+            android:id="@+id/home_button"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="77dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:backgroundTint="@color/teal_200"
+            android:drawableLeft="@drawable/home_icon"
+            android:textSize="25dp" />
 
+        <!-- TextInputLayout in top center -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout"
+            android:layout_width="530dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/home_button"
+            android:layout_toRightOf="@id/home_button"
+            android:layout_toLeftOf="@id/backspace">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_input_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="|"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Backspace button in middle right -->
+        <Button
+            android:id="@+id/backspace"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="65dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/text_input_layout"
+            android:layout_toEndOf="@id/text_input_layout"
+            android:layout_toLeftOf="@id/speak_button"
+            android:layout_toStartOf="@id/speak_button"
+            android:backgroundTint="@color/teal_200"
+            android:drawableLeft="@drawable/backspace"
+            android:drawablePadding="2dp" />
+
+        <!-- Speak button in top right -->
+        <Button
+            android:id="@+id/speak_button"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="65dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/teal_200"
+            android:drawableLeft="@drawable/speak_icon"
+            android:drawablePadding="2dp" />
+
+        <!-- Grid of 4 x 8 buttons below -->
+        <GridLayout
+            android:id="@+id/grid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/home_button"
+            android:padding="5dp"
+            android:columnCount="6"
+            android:rowCount="8">
+
+            <!-- Buttons in the grid -->
             <Button
-                android:id="@+id/dummy_button"
-                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/leisure_1"
+                style="@style/Widget.Material3.Button.Icon"
+                android:backgroundTint="@color/category_color"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+                android:layout_margin="5dp"
+                android:text="Board Games"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
 
-        </LinearLayout>
-    </FrameLayout>
+            <Button
+                android:id="@+id/leisure_2"
+                android:backgroundTint="@color/category_color"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_margin="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Video Games"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
 
-</FrameLayout>
+            <Button
+                android:id="@+id/leisure_3"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Sports"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_4"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Outside"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_5"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Play"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_6"
+                android:backgroundTint="@color/tone_color"
+                android:layout_margin="5dp"
+                android:background="@animator/btn_selector_shape"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Tone"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_7"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Vacation"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_8"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Hike"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_9"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Swimming"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_10"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Dancing"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_11"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Travel"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_12"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Friends"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_13"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_14"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_15"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_16"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/leisure_17"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+            <Button
+                android:id="@+id/leisure_18"
+                android:backgroundTint="@color/category_color"
+                android:layout_margin="5dp"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
+
+            <!-- Add more buttons here as needed -->
+
+        </GridLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

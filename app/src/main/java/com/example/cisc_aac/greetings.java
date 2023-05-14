@@ -15,7 +15,7 @@ import android.widget.Button;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class FullscreenActivity extends AppCompatActivity {
+public class greetings extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -99,37 +99,45 @@ public class FullscreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_fullscreen);
+        setContentView(R.layout.activity_greetings);
 
         mVisible = true;
-//        mControlsView = findViewById(R.id.fullscreen_content_controls);
-//        mContentView = findViewById(R.id.fullscreen_content);
 
-        /*
+        // Set up the user interaction to manually show or hide the system UI.
+        mContentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggle();
+            }
+        });
+
+        // Upon interacting with UI controls, delay any scheduled hide()
+        // operations to prevent the jarring behavior of controls going away
+        // while interacting with the UI.
+                /*
         defines each button on the home page
          */
         Button home_button = findViewById(R.id.home_button);
         Button backspace = findViewById(R.id.backspace);
         Button speak_button = findViewById(R.id.speak_button);
-        Button recent1 = findViewById(R.id.button_1);
-        Button recent2 = findViewById(R.id.button_2);
-        Button recent3 = findViewById(R.id.button_3);
-        Button recent4 = findViewById(R.id.button_4);
-        Button recent5 = findViewById(R.id.button_5);
-        Button tone = findViewById(R.id.button_6);
-        Button emotions = findViewById(R.id.button_7);
-        Button people = findViewById(R.id.button_8);
-        Button places = findViewById(R.id.button_9);
-        Button food = findViewById(R.id.button_10);
-        Button time = findViewById(R.id.button_11);
-        Button myself = findViewById(R.id.button_12);
-        Button greetings = findViewById(R.id.button_13);
-        Button personal = findViewById(R.id.button_14);
-        Button things = findViewById(R.id.button_15);
-        Button leisure = findViewById(R.id.button_16);
-        Button little_words = findViewById(R.id.button_17);
-        Button new_word = findViewById(R.id.button_18);
-
+        Button word1 = findViewById(R.id.greetings_1);
+        Button word2 = findViewById(R.id.greetings_2);
+        Button word3 = findViewById(R.id.greetings_3);
+        Button word4 = findViewById(R.id.greetings_4);
+        Button word5 = findViewById(R.id.greetings_5);
+        Button tone = findViewById(R.id.greetings_6);
+        Button word7 = findViewById(R.id.greetings_7);
+        Button word8 = findViewById(R.id.greetings_8);
+        Button word9 = findViewById(R.id.greetings_9);
+        Button word10 = findViewById(R.id.greetings_10);
+        Button word11 = findViewById(R.id.greetings_11);
+        Button word12 = findViewById(R.id.greetings_12);
+        Button word13 = findViewById(R.id.greetings_13);
+        Button word14 = findViewById(R.id.greetings_14);
+        Button word15 = findViewById(R.id.greetings_15);
+        Button word16 = findViewById(R.id.greetings_16);
+        Button word17 = findViewById(R.id.greetings_17);
+        Button word18 = findViewById(R.id.greetings_18);
 
         /*
         defines each button listener on the home page
@@ -155,38 +163,38 @@ public class FullscreenActivity extends AppCompatActivity {
             }
         });
 
-        recent1.setOnClickListener(new View.OnClickListener() {
+        word1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: Label button first word on stack
+//              TODO: add "Home"
             }
         });
 
-        recent2.setOnClickListener(new View.OnClickListener() {
+        word2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: Label button second word on stack
+//              TODO: add "school"
             }
         });
 
-        recent3.setOnClickListener(new View.OnClickListener() {
+        word3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: Label button third word on stack
+//              TODO: add "grocery store"
             }
         });
 
-        recent4.setOnClickListener(new View.OnClickListener() {
+        word4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: Label button fourth word on stack
+//              TODO: add "movies"
             }
         });
 
-        recent5.setOnClickListener(new View.OnClickListener() {
+        word5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: Label button fifth word on stack
+//              TODO: add "park"
             }
         });
 
@@ -197,108 +205,89 @@ public class FullscreenActivity extends AppCompatActivity {
             }
         });
 
-        emotions.setOnClickListener(new View.OnClickListener() {
+        word7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_emotions);
+//              TODO: add "work"
             }
         });
 
-        people.setOnClickListener(new View.OnClickListener() {
+        word8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_people);
+//              TODO: add "bar"
             }
         });
 
-        places.setOnClickListener(new View.OnClickListener() {
+        word9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_places_fullscreen);
+//              TODO: add "mall"
             }
         });
 
-        food.setOnClickListener(new View.OnClickListener() {
+        word10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_food);
+//              TODO: add "gym"
             }
         });
 
-        time.setOnClickListener(new View.OnClickListener() {
+        word11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_time);
+//              TODO: add "doctor"
             }
         });
 
-        myself.setOnClickListener(new View.OnClickListener() {
+        word12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_myself);
+//              TODO: add "restaurant"
             }
         });
 
-        greetings.setOnClickListener(new View.OnClickListener() {
+        word13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_greetings);
+//              TODO: add text box popup
             }
         });
 
-        personal.setOnClickListener(new View.OnClickListener() {
+        word14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_personal);
+//              TODO: add text box popup
             }
         });
 
-        things.setOnClickListener(new View.OnClickListener() {
+        word15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_things);
+//              TODO: add text box popup
             }
         });
 
-        leisure.setOnClickListener(new View.OnClickListener() {
+        word16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_leisure);
+//              TODO: add text box popup
             }
         });
 
-        little_words.setOnClickListener(new View.OnClickListener() {
+        word17.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_little);
+//              TODO: add text box popup
             }
         });
 
-        new_word.setOnClickListener(new View.OnClickListener() {
+        word18.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: Add popup that asks what category for new word to go in, adds new word to that category
-//                if max words reached, ask which word to delete
+//              TODO: add text box popup
             }
         });
-
-
-
-
-
-
-        // Set up the user interaction to manually show or hide the system UI.
-        mContentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggle();
-            }
-        });
-
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
-//        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
 
     @Override
