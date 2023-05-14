@@ -10,11 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cisc_AAC">
         <activity
+            android:name=".leisure"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_leisure"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen"></activity>
+        <activity
+            android:name=".places_fullscreen"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_places_fullscreen"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen" />
+        <activity
             android:name=".FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Cisc_AAC.Fullscreen"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.Cisc_AAC.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
