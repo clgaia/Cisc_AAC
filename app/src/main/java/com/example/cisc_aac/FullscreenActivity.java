@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -350,6 +351,7 @@ public class FullscreenActivity extends AppCompatActivity {
             public void onClick(View view) {
 //              TODO: Add popup that asks what category for new word to go in, adds new word to that category
 //                if max words reached, ask which word to delete
+
             }
         });
 

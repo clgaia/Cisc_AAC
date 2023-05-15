@@ -25,7 +25,7 @@
         <Button
             android:id="@+id/home_button"
             style="@style/Widget.Material3.Button.Icon"
-            android:layout_width="77dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
@@ -37,8 +37,8 @@
         <!-- TextInputLayout in top center -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout"
-            android:layout_width="530dp"
-            android:layout_height="wrap_content"
+            android:layout_width="1000dp"
+            android:layout_height="80dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@id/home_button"
@@ -48,7 +48,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_input_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:hint="|"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -72,13 +72,13 @@
         <Button
             android:id="@+id/speak_button"
             style="@style/Widget.Material3.Button.Icon"
-            android:layout_width="65dp"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:backgroundTint="@color/teal_200"
-            android:drawableLeft="@drawable/speak_icon"
+            android:drawableTop="@drawable/speech_icon"
             android:drawablePadding="2dp" />
 
         <!-- Grid of 4 x 8 buttons below -->
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Home"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -112,7 +112,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="School"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -124,7 +124,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Grocery Store"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -136,7 +136,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Movies"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -148,7 +148,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Park"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -156,12 +156,11 @@
                 android:id="@+id/places_6"
                 android:backgroundTint="@color/tone_color"
                 android:layout_margin="5dp"
-                android:background="@animator/btn_selector_shape"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Tone"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -173,7 +172,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Work"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -185,7 +184,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Bar"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -197,7 +196,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Mall"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -209,7 +208,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Gym"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -221,7 +220,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Doctor"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -233,7 +232,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Restaurant"
-                android:textSize="14dp"
+                android:textSize="32dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -243,8 +242,9 @@
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -255,7 +255,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -266,7 +267,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -277,7 +279,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -288,7 +291,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
             <Button
@@ -298,7 +302,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 

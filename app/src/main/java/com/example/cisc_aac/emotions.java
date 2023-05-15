@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +17,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -130,14 +134,17 @@ public class emotions extends AppCompatActivity {
         home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_fullscreen);
+
+                Intent intent = new Intent(emotions.this, FullscreenActivity.class);
+                startActivity(intent);
+                textView.setText(myList.getString());
             }
         });
 
         backspace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                TODO: delete most recent word added to list
+//                delete most recent word added to list
                   myList.removeItem();
                 textView.setText(myList.getString());
             }
@@ -146,7 +153,7 @@ public class emotions extends AppCompatActivity {
         speak_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: read list in order using text-to-speech and clear list
+//              read list in order using text-to-speech and clear list
                 String words = myList.getString();
                 tts = new TextToSpeech(getApplicationContext(), status -> {
                     if (status == TextToSpeech.SUCCESS) {
@@ -171,7 +178,6 @@ public class emotions extends AppCompatActivity {
         word1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "Home"
                 myList.addItem(word1.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -180,7 +186,6 @@ public class emotions extends AppCompatActivity {
         word2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "school"
                 myList.addItem(word2.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -189,7 +194,6 @@ public class emotions extends AppCompatActivity {
         word3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "grocery store"
                 myList.addItem(word3.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -198,7 +202,6 @@ public class emotions extends AppCompatActivity {
         word4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "movies"
                 myList.addItem(word4.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -207,7 +210,6 @@ public class emotions extends AppCompatActivity {
         word5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "park"
                 myList.addItem(word5.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -225,7 +227,6 @@ public class emotions extends AppCompatActivity {
         word7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "work"
                 myList.addItem(word7.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -234,7 +235,6 @@ public class emotions extends AppCompatActivity {
         word8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "bar"
                 myList.addItem(word8.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -243,7 +243,6 @@ public class emotions extends AppCompatActivity {
         word9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "mall"
                 myList.addItem(word9.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -252,7 +251,6 @@ public class emotions extends AppCompatActivity {
         word10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "gym"
                 myList.addItem(word10.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -261,7 +259,6 @@ public class emotions extends AppCompatActivity {
         word11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "doctor"
                 myList.addItem(word11.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -270,7 +267,6 @@ public class emotions extends AppCompatActivity {
         word12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add "restaurant"
                 myList.addItem(word12.getText().toString());
                 textView.setText(myList.getString());
             }
@@ -279,54 +275,247 @@ public class emotions extends AppCompatActivity {
         word13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add text box popup
-                myList.addItem(word13.getText().toString());
-                textView.setText(myList.getString());
+                if(word13.getText().toString().equals("+")){
+                    // Create an AlertDialog builder
+                    AlertDialog.Builder builder = new AlertDialog.Builder(emotions.this);
+                    builder.setTitle("Enter Text");
+
+                    // Create an EditText view for the dialog
+                    final EditText input = new EditText(emotions.this);
+                    builder.setView(input);
+
+                    // Set the positive button action
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Update the button text with the entered text
+                                    String newText = input.getText().toString();
+                                    word13.setText(newText);
+                                }
+                        });
+                    // Set the negative button action
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    // Show the dialog
+                    builder.show();
+                    textView.setText(myList.getString());
+                }
+                else{
+                    myList.addItem(word13.getText().toString()) ;
+                    textView.setText(myList.getString());
+                }
+
             }
         });
+
 
         word14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add text box popup
-                myList.addItem(word14.getText().toString());
-                textView.setText(myList.getString());
+                if(word14.getText().toString().equals("+")){
+                    // Create an AlertDialog builder
+                    AlertDialog.Builder builder = new AlertDialog.Builder(emotions.this);
+                    builder.setTitle("Enter Text");
+
+                    // Create an EditText view for the dialog
+                    final EditText input = new EditText(emotions.this);
+                    builder.setView(input);
+
+                    // Set the positive button action
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Update the button text with the entered text
+                            String newText = input.getText().toString();
+                            word14.setText(newText);
+                        }
+                    });
+                    // Set the negative button action
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    // Show the dialog
+                    builder.show();
+                    textView.setText(myList.getString());
+                }
+                else{
+                    myList.addItem(word14.getText().toString()) ;
+                    textView.setText(myList.getString());
+                }
+
             }
         });
 
         word15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add text box popup
-                myList.addItem(word15.getText().toString());
-                textView.setText(myList.getString());
+                if(word15.getText().toString().equals("+")){
+                    // Create an AlertDialog builder
+                    AlertDialog.Builder builder = new AlertDialog.Builder(emotions.this);
+                    builder.setTitle("Enter Text");
+
+                    // Create an EditText view for the dialog
+                    final EditText input = new EditText(emotions.this);
+                    builder.setView(input);
+
+                    // Set the positive button action
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Update the button text with the entered text
+                            String newText = input.getText().toString();
+                            word15.setText(newText);
+                        }
+                    });
+                    // Set the negative button action
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    // Show the dialog
+                    builder.show();
+                    textView.setText(myList.getString());
+                }
+                else{
+                    myList.addItem(word15.getText().toString()) ;
+                    textView.setText(myList.getString());
+                }
+
             }
         });
 
         word16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add text box popup
-                myList.addItem(word16.getText().toString());
-                textView.setText(myList.getString());
+                if(word16.getText().toString().equals("+")){
+                    // Create an AlertDialog builder
+                    AlertDialog.Builder builder = new AlertDialog.Builder(emotions.this);
+                    builder.setTitle("Enter Text");
+
+                    // Create an EditText view for the dialog
+                    final EditText input = new EditText(emotions.this);
+                    builder.setView(input);
+
+                    // Set the positive button action
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Update the button text with the entered text
+                            String newText = input.getText().toString();
+                            word16.setText(newText);
+                        }
+                    });
+                    // Set the negative button action
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    // Show the dialog
+                    builder.show();
+                    textView.setText(myList.getString());
+                }
+                else{
+                    myList.addItem(word16.getText().toString()) ;
+                    textView.setText(myList.getString());
+                }
+
             }
         });
 
         word17.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add text box popup
-                myList.addItem(word17.getText().toString());
-                textView.setText(myList.getString());
+                if(word17.getText().toString().equals("+")){
+                    // Create an AlertDialog builder
+                    AlertDialog.Builder builder = new AlertDialog.Builder(emotions.this);
+                    builder.setTitle("Enter Text");
+
+                    // Create an EditText view for the dialog
+                    final EditText input = new EditText(emotions.this);
+                    builder.setView(input);
+
+                    // Set the positive button action
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Update the button text with the entered text
+                            String newText = input.getText().toString();
+                            word17.setText(newText);
+                        }
+                    });
+                    // Set the negative button action
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    // Show the dialog
+                    builder.show();
+                    textView.setText(myList.getString());
+                }
+                else{
+                    myList.addItem(word17.getText().toString()) ;
+                    textView.setText(myList.getString());
+                }
+
             }
         });
 
         word18.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//              TODO: add text box popup
-                myList.addItem(word18.getText().toString());
-                textView.setText(myList.getString());
+                if(word18.getText().toString().equals("+")){
+                    // Create an AlertDialog builder
+                    AlertDialog.Builder builder = new AlertDialog.Builder(emotions.this);
+                    builder.setTitle("Enter Text");
+
+                    // Create an EditText view for the dialog
+                    final EditText input = new EditText(emotions.this);
+                    builder.setView(input);
+
+                    // Set the positive button action
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Update the button text with the entered text
+                            String newText = input.getText().toString();
+                            word18.setText(newText);
+                        }
+                    });
+                    // Set the negative button action
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    // Show the dialog
+                    builder.show();
+                    textView.setText(myList.getString());
+                }
+                else{
+                    myList.addItem(word18.getText().toString()) ;
+                    textView.setText(myList.getString());
+                }
+
             }
         });
     }

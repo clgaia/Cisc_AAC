@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Happy"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -112,7 +112,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Sad"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -122,7 +122,7 @@
                 android:layout_margin="5dp"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_height="wrap_content"
                 android:text="Angry"
                 android:layout_columnWeight="1"
@@ -136,7 +136,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Tired"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -148,7 +148,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Hungry"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -160,7 +160,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Tone"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -172,7 +172,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Confused"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -184,7 +184,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Hurt"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -196,7 +196,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Surprised"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -208,7 +208,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Anxious"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -220,7 +220,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Interested"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -232,7 +232,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Excited"
-                android:textSize="15dp"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -243,7 +243,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -254,7 +255,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -265,7 +267,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -276,7 +279,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
@@ -287,7 +291,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
             <Button
@@ -297,7 +302,8 @@
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:text="+"
+                android:textSize="35dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"/>
 
